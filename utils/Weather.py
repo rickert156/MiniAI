@@ -1,13 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
+import time
 
-def dataWrite(ip, city):
+def dataWrite(date, ip, city):
 	data_file = 'log.txt'
 
 	with open(data_file, 'a+') as file:
-		data = file.write(f'{ip} {city}\n')
+		data = file.write(f'{date}, {ip} {city}\n')
 
 def ipAddress():
+	date = time.strftime('%d.%m.%Y %H:%M:%S')
 	respose = requests.get('https://2ip.ru/')
 	respose = respose.text
 	bs = BeautifulSoup(respose, 'lxml')
@@ -18,7 +20,7 @@ def ipAddress():
 	ip = ip.split()
 	city = city.split(',')[0].strip()
 
-	dataWrite(ip, city)
+	dataWrite(date, ip, city)
 
 def weather():
 	city = ipAddress()
