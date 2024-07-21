@@ -1,12 +1,15 @@
 from utils.Weather import weather
+from utils.NewData import writeNewDate
 
 def main():
-	mini_ai = input('Что-то хотите спросить? \n')
+	mini_ai = input('Что-то хотите спросить? ')
 	mini_ai = mini_ai.lower()
 	if 'погод' in mini_ai:
 		weather()
 	if 'как ' in mini_ai and 'дела' in mini_ai:
-		print('У меня все хорошо, у тебя как? \n')
+		print('У меня все хорошо, у тебя как? ')
 		input('')
+	if 'запис' in mini_ai:
+		writeNewDate()
 
 main()
