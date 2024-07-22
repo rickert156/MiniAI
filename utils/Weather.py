@@ -6,7 +6,7 @@ def dataWrite(date, ip, city):
 	data_file = 'log.txt'
 
 	with open(data_file, 'a+') as file:
-		data = file.write(f'{date}, {ip} {city}\n')
+		data = file.write(f'{date}, {ip} {city}\tЗапрос Погоды\n')
 
 def ipAddress():
 	date = time.strftime('%d.%m.%Y %H:%M:%S')
