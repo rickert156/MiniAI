@@ -2,6 +2,7 @@ from utils.Weather import weather
 from utils.NewData import writeNewDate, showData
 from utils.Security import securityLink, parserPost, searchPost
 from utils.SearchInfo import info
+from utils.Wiki import Wiki
 
 def main():
 	mini_ai = input('Что-то хотите спросить?(--w новая запись --r читать записи) ')
@@ -17,6 +18,8 @@ def main():
 		parserPost()
 	if 'search' in mini_ai:
 		info()
+	if 'wiki' in mini_ai:
+		Wiki()
 
 
 main()
