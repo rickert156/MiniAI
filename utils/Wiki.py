@@ -7,4 +7,5 @@ def Wiki():
 	response = requests.get(f'{wiki}{search}')
 	response = response.text
 	bs = BeautifulSoup(response, 'lxml')
-	print(bs.body.get_text())
+	title = bs.find(class_='mw-page-title-main').get_text()
+	print(title)

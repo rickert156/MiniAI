@@ -22,6 +22,7 @@ def ipAddress():
 
 	dataWrite(date, ip, city)
 
+
 def weather():
 	city = ipAddress()
 	temp_day = 'Днем:'
