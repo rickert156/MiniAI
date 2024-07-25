@@ -5,11 +5,14 @@ from utils.NewData import createDateDir
 
 data = 'Data'
 links_list = 'base.txt'
-result = 'security.csv'
+result = 'securityTest.csv'
 site = 'https://www.securitylab.ru'
 date_row = 'Date'
 title_row = 'Title'
 message_row = 'News'
+
+def updateData():
+	pass
 
 def postSave(date, title, post):
 	with open(f'{data}/{result}', 'a+') as file:
@@ -61,8 +64,8 @@ def searchPost(response):
 
 def securityLink():
 	pages = 'https://www.securitylab.ru/news/page1_'
-	number_requests = 1298
-	while number_requests <= 4403:
+	number_requests = 0
+	while True:
 		number_requests+=1
 		site = f'{pages}{number_requests}.php'
 		response = requests.get(site)
