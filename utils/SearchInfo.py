@@ -1,10 +1,13 @@
 from utils.Security import data, result, date_row, title_row, message_row
+from utils.location import ipAddress
 import csv
 
 
 def info():
+	query = 'Запрос постов Security'
 	request = input('Что вы хотите найти? \n')
 	space = '-'*20
+	ipAddress(query)
 	with open(f'{data}/{result}', 'r') as file:
 		number_response=0
 		for row in csv.DictReader(file):

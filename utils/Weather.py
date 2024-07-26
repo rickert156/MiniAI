@@ -1,30 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
-import time
+from utils.location import ipAddress
 
-def dataWrite(date, ip, city):
-	data_file = 'log.txt'
-
-	with open(data_file, 'a+') as file:
-		data = file.write(f'{date}, {ip} {city}\tЗапрос Погоды\n')
-
-def ipAddress():
-	date = time.strftime('%d.%m.%Y %H:%M:%S')
-	respose = requests.get('https://2ip.ru/')
-	respose = respose.text
-	bs = BeautifulSoup(respose, 'lxml')
-	ip = bs.find(class_='ip')
-	city = bs.find(id='ip-info-country')
-
-	ip, city = ip.get_text(), city.get_text()
-	ip = ip.split()
-	city = city.split(',')[0].strip()
-
-	dataWrite(date, ip, city)
+query = 'Запрос Погоды'
 
 
 def weather():
-	city = ipAddress()
+	city = ipAddress(query)
 	temp_day = 'Днем:'
 	temp_evening = 'Вчером:'
 	temp_night = 'Ночью:'

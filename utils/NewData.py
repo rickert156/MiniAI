@@ -1,4 +1,5 @@
 import csv, os, time
+from utils.location import ipAddress
 
 dataFile = 'data.csv'
 dirDate = 'Data'
@@ -6,6 +7,7 @@ theme = 'Тема'
 message = 'Данные'
 
 def showData():
+	query = 'Запрос своих постов'
 	with open(f'{dirDate}/{dataFile}', 'r') as file:
 		number_string=0
 		for row in csv.DictReader(file):
@@ -13,6 +15,8 @@ def showData():
 			theme_row = row[theme]
 			message_row = row[message]
 			print(f'[{number_string}] {theme_row}\n{message_row}\n')
+
+		ipAddress(query)
 
 
 def createDateDir():
@@ -25,8 +29,8 @@ def createDateDir():
 def writeNewDate():
 	createDateDir()
 	try:
+		query = 'Запись своего поста'
 		data_file = 'log.txt'
-
 		data_theme = input('Укажите тему: ')
 		data_message = input('Укажите данные: ')
 		with open(f'{dirDate}/{dataFile}', 'a+', encoding='utf-8') as file:
@@ -36,6 +40,9 @@ def writeNewDate():
 			date = time.strftime('%d.%m.%Y %H:%M:%S')
 			with open(data_file, 'a+') as file:
 				data = file.write(f'{date}\tЗапись новых данных в тему: "{data_theme}"\n')
+
+			ipAddress(query)
+			print('\nНовые данны записаны')
 		
 	except UnicodeDecodeError:
 		print('Возникла ошибка с кодировкой, попробуйте пожалуйста еще раз написать\n')
