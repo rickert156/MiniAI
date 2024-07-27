@@ -3,6 +3,7 @@ from utils.NewData import writeNewDate, showData
 from utils.Security import parserPost, searchPost
 from utils.SearchInfo import info
 from utils.Wiki import Wiki
+import requests
 
 description = """
 На данный момент я могу:
@@ -37,6 +38,8 @@ def main():
 		print('\nФайл для чтений/записи не найден')
 	except UnicodeDecodeError:
 		print('\nНекорректный ввод')
+	except requests.exceptions.ConnectionError:
+		print('\nПроверьте подключение к сети')
 
 
 
